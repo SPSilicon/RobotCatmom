@@ -36,9 +36,11 @@ public class RocatMain extends AppCompatActivity {
     private Spinner rocatSelect;
     private TextView welcomeText;
     private Button recordButton;
+    private Button logoutButton;
     private Switch notiSwitch;
     private String username;
     private SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,12 +91,27 @@ public class RocatMain extends AppCompatActivity {
         recordButton = findViewById(R.id.recordButton);
         setRecordButton();
 
+        logoutButton = findViewById(R.id.logoutButton);
+        setLogoutButton();
 
 
         /*TODO : 접속할때에 db에서 푸시알람 구독을 하고있는지 확인하여 스위치 on/off **complete**
           TODO 2: spinner를 선택할 때마다 구독정보 갱신하여 스위치 on/off **complete**
           TODO 3: 웹서버에서 푸시알림 호출하기(php)
         */
+    }
+    void setLogoutButton()
+    {
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sessionManager.deleteSession();
+                Intent intent = new Intent(RocatMain.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
     }
     /*
             spinner, Button, switch 등을 상속하는 rocat~ 클래스를 만들어서 멤버메소드로 넣어둘 수 있을까?

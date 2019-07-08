@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         {
             Intent intent = new Intent(MainActivity.this , RocatMain.class);
             intent.putExtra("userid",sessionManager.getUserID());
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             MainActivity.this.startActivity(intent);
         }
         setRegisterButton();
@@ -98,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
                             {
                                 Intent intent = new Intent(MainActivity.this , RocatMain.class);
                                 intent.putExtra("userid",textId);
-                                intent.setFlags(intent.FLAG_ACTIVITY_NO_HISTORY);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 MainActivity.this.startActivity(intent);
                             }
                             else
