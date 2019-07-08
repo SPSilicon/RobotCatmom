@@ -48,6 +48,7 @@ public class RocatMain extends AppCompatActivity {
         username = intent.getStringExtra("userid");
         sessionManager = new SessionManager(RocatMain.this);
 
+
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                     @Override
@@ -59,14 +60,18 @@ public class RocatMain extends AppCompatActivity {
 
                         // Get new Instance ID token
                         String token = task.getResult().getToken();
-                        registerInstanceId(username,token);
-                        sessionManager.createSession(username,token);
+
+                        //세션이 없는 경우 유저이름과 deviceID를 웹서버에 저장함
+                        if(!sessionManager.checkSession())
+                        {
+                            registerInstanceId(username, token);
+                            sessionManager.createSession(username, token);
+                        }
                         // Log and toast
                         String msg = getString(R.string.msg_token_fmt, token);
                         Log.d(TAG, msg);
                     }
                 });
-
 
 
         welcomeText = (TextView)findViewById(R.id.welcomeText);
@@ -273,7 +278,7 @@ public class RocatMain extends AppCompatActivity {
         notiSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean isChecked = ((Switch)notiSwitch).isChecked();
+                boolean isChecked = notiSwitch.isChecked();
                 Response.Listener<String> responseLisnter = new Response.Listener<String>(){
                     @Override
                     public void onResponse(String response) {

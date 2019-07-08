@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Button loginButton;
     private Button registerButton;
 
-    private SessionManager sessionManager = new SessionManager(MainActivity.this);
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         loginButton = (Button) findViewById(R.id.loginButton);
         registerButton = (Button) findViewById(R.id.registerButton);
-
+        sessionManager = new SessionManager(MainActivity.this);
         if(sessionManager.checkSession())
         {
             Intent intent = new Intent(MainActivity.this , RocatMain.class);
@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                             {
                                 Intent intent = new Intent(MainActivity.this , RocatMain.class);
                                 intent.putExtra("userid",textId);
+                                intent.setFlags(intent.FLAG_ACTIVITY_NO_HISTORY);
                                 MainActivity.this.startActivity(intent);
                             }
                             else

@@ -44,7 +44,7 @@ public class SessionManager {
 
     public boolean checkSession()
     {
-        if(mSharedPreferences.getBoolean("IS_LOGIN",false))
+        if(!mSharedPreferences.getBoolean("IS_LOGIN",false))
         {
             mEditor = mSharedPreferences.edit();
             mEditor.clear();
@@ -83,7 +83,7 @@ public class SessionManager {
                     catch(JSONException e)
                     {
                         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                        builder.setMessage("JSON 오류\n"+e.toString())
+                        builder.setMessage(htmlResponse)
                                 .setNegativeButton("확인",null)
                                 .create()
                                 .show();
@@ -99,7 +99,9 @@ public class SessionManager {
             * TODO: 웹서버는 한계정당 하나의 DEVICE_ID를 가지게 함
             * TODO: 로그인할때 이미 다른아이디에 존재하는 DEVICE_ID이면, 기존것을 삭제
             */
+
         }
+
     }
 
     public void createSession(String id, String deviceID)
@@ -108,7 +110,15 @@ public class SessionManager {
         mEditor.putBoolean("IS_LOGIN",true);
         mEditor.putString("USER_ID", id);
         mEditor.putString("DEVICE_ID", deviceID);
-        if(!mEditor.commit())
+        if(mEditor.commit())
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+            builder.setMessage("세션 생성 성공"+mSharedPreferences.getString("USER_ID","")+mSharedPreferences.getString("DEVICE_ID",""))
+                    .setNegativeButton("확인",null)
+                    .create()
+                    .show();
+        }
+        else
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
             builder.setMessage("세션 생성 오류")
