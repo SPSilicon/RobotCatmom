@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Rocat</string>
+    <string name="id">ID</string>
+    <string name="recordIDLabel">ID</string>
+    <string name="GPSLabel">GPS좌표</string>
+    <string name="timeLabel">시간</string>
+    <string name="회원가입">회원가입</string>
+    <string name="rocat">Rocat</string>
+    <string name="아이디">아이디</string>
+    <string name="비밀번호">비밀번호</string>
+    <string name="loginButton">로그인</string>
+    <string name="registerButton">회원가입</string>
+    <string name="submit">등록</string>
+    <string name="mainLabelText">Rocat</string>
+    <string name="tableID">ID          </string>
+    <string name="tableTime">시간            </string>
+    <string name="tableGPS">GPS좌표          </string>
+    <string name="title_activity_rocat_map">Map</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+</resources>

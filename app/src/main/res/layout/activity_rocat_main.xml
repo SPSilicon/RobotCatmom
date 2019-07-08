@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RocatMain">
+
+    <TextView
+        android:id="@+id/mainLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="116dp"
+        android:text="@string/mainLabelText"
+        android:textSize="70sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/videoButton"
+        android:layout_width="146dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginBottom="89dp"
+        android:text="동영상"
+        app:layout_constraintBottom_toTopOf="@+id/push"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rocatid" />
+
+    <Button
+        android:id="@+id/recordButton"
+        android:layout_width="146dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="257dp"
+        android:text="기록"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/videoButton"
+        app:layout_constraintTop_toBottomOf="@+id/rocatid" />
+
+    <Switch
+        android:id="@+id/push"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginEnd="165dp"
+        android:layout_marginBottom="136dp"
+        android:text="알림"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="176dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainLabel" />
+
+    <Spinner
+        android:id="@+id/rocatid"
+        android:layout_width="112dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="150dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
+
+    <TextView
+        android:id="@+id/rocatText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="28dp"
+        android:text="rocatid"
+        app:layout_constraintEnd_toStartOf="@+id/rocatid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainLabel" />
+
+</android.support.constraint.ConstraintLayout>
