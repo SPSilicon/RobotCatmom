@@ -44,19 +44,21 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Map<String,String> data = remoteMessage.getData();
         String title = data.get("title");
         String message = data.get("body");
+        String rocatId = data.get("rocatId");
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0)
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
 
-        sendNotification(title,message);
+        sendNotification(title,message,rocatId);
     }
     /**
      * Create and show a simple notification containing the received FCM message.
      *
      * @param messageBody FCM message body received.
      */
-    private void sendNotification(String title, String message) {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void sendNotification(String title, String message, String rocatId) {
+        Intent intent = new Intent(this, RecordListView.class);
+        intent.putExtra("rocatId", rocatId);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
@@ -78,7 +80,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Since android Oreo notification channel is needed.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(channelId,
-                    "Channel human readable title",
+                    "로봇캣맘 알림",
                     NotificationManager.IMPORTANCE_DEFAULT);
             notificationManager.createNotificationChannel(channel);
         }
