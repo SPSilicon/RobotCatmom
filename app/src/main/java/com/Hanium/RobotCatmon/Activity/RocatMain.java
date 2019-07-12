@@ -1,4 +1,4 @@
-package com.Hanium.RobotCatmon;
+package com.Hanium.RobotCatmon.Activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -14,6 +14,12 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.Hanium.RobotCatmon.R;
+import com.Hanium.RobotCatmon.Requests.GetSubsStatRequest;
+import com.Hanium.RobotCatmon.Requests.RegisterInstanceIdRequest;
+import com.Hanium.RobotCatmon.Requests.RocatListRequest;
+import com.Hanium.RobotCatmon.Requests.RocatSubsRequest;
+import com.Hanium.RobotCatmon.Session.SessionManager;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
@@ -64,6 +70,7 @@ public class RocatMain extends AppCompatActivity {
                         String token = task.getResult().getToken();
 
                         //세션이 없는 경우 유저이름과 deviceID를 웹서버에 저장함
+                        // TODO : device_id(instance_ID) 가 변경되는 경우도 있으니 그 경우에 행동을 정의하자
                         if(!sessionManager.checkSession())
                         {
                             registerInstanceId(username, token);
@@ -105,11 +112,13 @@ public class RocatMain extends AppCompatActivity {
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sessionManager.deleteSession();
-                Intent intent = new Intent(RocatMain.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                if(sessionManager.deleteSession())
+                {
+                    Intent intent = new Intent(RocatMain.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -150,6 +159,7 @@ public class RocatMain extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(RocatMain.this);
         queue.add(registerInstanceIdRequest);
     }
+
     void setRocatSelect()
     {
         Response.Listener<String> responseListener= new Response.Listener<String>()
