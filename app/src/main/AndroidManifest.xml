@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.Hanium.RobotCatmon">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -17,7 +16,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -31,37 +29,36 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name="com.Hanium.RobotCatmon.RocatMap"
-            android:label="@string/title_activity_rocat_map"></activity>
-        <activity android:name="com.Hanium.RobotCatmon.RecordListView" />
-        <activity android:name="com.Hanium.RobotCatmon.RocatMain" />
-        <activity android:name="com.Hanium.RobotCatmon.Register" />
-        <activity android:name="com.Hanium.RobotCatmon.MainActivity">
+            android:name=".Activity.RocatMap"
+            android:label="@string/title_activity_rocat_map" />
+        <activity android:name=".Activity.RecordListView" />
+        <activity android:name=".Activity.RocatMain" />
+        <activity android:name=".Activity.Register" />
+        <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- FCM 클라우드 메시징 관련 -->
-       <service
-            android:name="com.Hanium.RobotCatmon.MyFirebaseMessagingService"
+        </activity> <!-- FCM 클라우드 메시징 관련 -->
+        <service
+            android:name=".FCM.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
-
     </application>
-
 
 </manifest>

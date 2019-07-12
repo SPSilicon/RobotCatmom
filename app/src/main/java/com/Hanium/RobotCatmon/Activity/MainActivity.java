@@ -1,4 +1,4 @@
-package com.Hanium.RobotCatmon;
+package com.Hanium.RobotCatmon.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
+import com.Hanium.RobotCatmon.R;
+import com.Hanium.RobotCatmon.Requests.LoginRequest;
+import com.Hanium.RobotCatmon.Session.SessionManager;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;

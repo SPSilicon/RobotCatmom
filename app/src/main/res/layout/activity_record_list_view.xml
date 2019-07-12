@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecordListView">
+    tools:context=".Activity.RecordListView">
 
     <LinearLayout
         android:id="@+id/listHead"
         android:layout_width="match_parent"
-        android:layout_height="528dp"
-        android:layout_marginBottom="83dp"
+        android:layout_height="720dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

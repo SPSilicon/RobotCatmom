@@ -1,4 +1,4 @@
-package com.Hanium.RobotCatmon;
+package com.Hanium.RobotCatmon.FCM;
 
 
 import android.app.NotificationChannel;
@@ -12,6 +12,8 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.Hanium.RobotCatmon.R;
+import com.Hanium.RobotCatmon.Activity.RecordListView;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
