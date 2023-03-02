@@ -25,3 +25,4 @@ Server : Google Cloud Platform(Linux Ubuntu 18.04.2 LTS)
 
 객체(사람)　탐지 : 일정 주기마다 카메라의 한 프레임을 Google Vision API를 사용하여 사람(특정 객체)이 있는지 판단합니다.
 
+![제목 없음](https://user-images.githubusercontent.com/44769598/222374361-dd56a409-eddc-4bb0-addf-88af478c0bd8.png)
